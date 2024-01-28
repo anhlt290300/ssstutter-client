@@ -21,6 +21,19 @@ module.exports = {
       xl: "1281px",
       "2xl": "1537px",
     },
+    animation: {
+      "moveLoadingSkeleton" : 'moveLoadingSkeleton 1.5s infinite ease-in-out '
+    },
+    keyframes: {
+      moveLoadingSkeleton: {
+        "0%": {
+          left: 0,
+        },
+        "100%": {
+          left: "100%",
+        },
+      },
+    },
   },
   plugins: [],
 };
