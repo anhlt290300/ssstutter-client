@@ -15,7 +15,7 @@ const Suggest = () => {
       <section className="px-4 py-10  sm:px-20">
         <div className="flex items-center justify-center flex-col">
           <div className="py-4 w-full sm:w-2/3 sm:p-16 flex items-center justify-center">
-            <h2 className="font-bold text-5xl">What's NEW?</h2>
+            <h2 className="font-bold text-5xl">What&apos;s NEW?</h2>
           </div>
           <ListSkeletonCard slidesToShow={4} />
         </div>
@@ -27,7 +27,7 @@ const Suggest = () => {
     <section className="px-4 py-10  sm:px-20">
       <div className="flex items-center justify-center flex-col">
         <div className="py-4 w-full sm:w-2/3 sm:p-16 flex items-center justify-center">
-          <h2 className="font-bold text-5xl">What's NEW?</h2>
+          <h2 className="font-bold text-5xl">What&apos;s NEW?</h2>
         </div>
         <ListProductCard products={rs.products} slidesToShow={4} />
       </div>
