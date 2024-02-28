@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   let { title, price, slug, colors, cost, mark, tag, discount } = product;
   return (
     <div className="m-2">
-      <a href={slug} className="hover:opacity-80 transition-all">
+      <a href={`/p/${slug}`} className="hover:opacity-80 transition-all">
         <div className=" relative">
           <img
             src={mark}

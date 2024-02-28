@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./past/Header";
-import Footer from "./past/Footer";
+import ProviderSession from "./serverpage/session/ProviderSession";
+
+import ApolloProviderLayout from "./serverpage/apollo/ApolloProviderLayout";
+import MainLayout from "./(layout)/MainLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +15,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <ApolloProviderLayout>
+        <ProviderSession>
+          <MainLayout>
+            <body className={inter.className}>{children}</body>
+          </MainLayout>
+        </ProviderSession>
+      </ApolloProviderLayout>
     </html>
   );
 }

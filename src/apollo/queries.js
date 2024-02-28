@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const getProductCards = gql`
-  query get($page: Int, $category: String) {
-    getProductCards(page: $page, category: $category) {
+  query get($page: Int, $categoryID: ID) {
+    getProductCards(page: $page, categoryID: $categoryID) {
       page
       pageSize
       products {
@@ -69,4 +69,41 @@ const getProductCardsPromotion = gql`
   }
 `;
 
-export { getProductCards, getProductCardsByTag, getProductCardsPromotion };
+const getProductBySlug = gql`
+  query get($slug: String) {
+    getProductBySlug(slug: $slug) {
+      title
+      cost
+      price
+      description
+      discount
+      # suggest
+      # categories {
+      #   slug
+      #   _id
+      # }
+      colors {
+        title
+        mark
+        images
+      }
+      # _id
+      # title
+      # categories {
+      #   slug
+      #   _id
+      # }
+      # colors {
+      #   title
+      #   images
+      # }
+    }
+  }
+`;
+
+export {
+  getProductCards,
+  getProductCardsByTag,
+  getProductCardsPromotion,
+  getProductBySlug,
+};

@@ -11,7 +11,22 @@ module.exports = {
         warning: "rgb(197 12 12 / 1)",
         secondary: "rgb( 255 255 255 /1)",
         "primary-300": "#00000080",
+        "primary-100": "#0000004d",
         buttonSlide: "#e5e7eb",
+        "primary-500": "#000",
+      },
+      animation: {
+        moveLoadingSkeleton: "moveLoadingSkeleton 1.5s infinite ease-in-out ",
+      },
+      keyframes: {
+        moveLoadingSkeleton: {
+          "0%": {
+            left: "0",
+          },
+          "100%": {
+            left: "100%",
+          },
+        },
       },
     },
     screens: {
@@ -20,19 +35,6 @@ module.exports = {
       lg: "1025px",
       xl: "1281px",
       "2xl": "1537px",
-    },
-    animation: {
-      "moveLoadingSkeleton" : 'moveLoadingSkeleton 1.5s infinite ease-in-out '
-    },
-    keyframes: {
-      moveLoadingSkeleton: {
-        "0%": {
-          left: 0,
-        },
-        "100%": {
-          left: "100%",
-        },
-      },
     },
   },
   plugins: [],

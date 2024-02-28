@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { getProductCardsByTag } from "../../../apollo/queries.js";
+import { getProductCardsByTag } from "@/apollo/queries.js";
 
 import ListProductCard from "../ListProductCard.jsx";
 import ListSkeletonCard from "../ListSkeletonCard.jsx";

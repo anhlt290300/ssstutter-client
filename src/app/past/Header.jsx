@@ -14,7 +14,7 @@ const Banner = [
     title: "Nhập: TETLANH giảm 10% trải nghiệm BST mới.",
   },
   {
-    slug: "/for-him",
+    slug: "/c/for-him",
     title: " ✈️ FREESHIP cho hóa đơn từ 499.000 VNĐ.",
   },
   {
@@ -29,7 +29,7 @@ const Nav = [
     title: "ABOUT SSS.",
   },
   {
-    slug: "/for-him",
+    slug: "/c/for-him",
     title: "SẢN PHẨM",
   },
   {

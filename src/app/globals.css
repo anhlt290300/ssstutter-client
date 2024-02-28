@@ -6,4 +6,66 @@ body {
   font-family: Noto Sans, sans-serif;
 }
 
+.cdx-block {
+  padding: 0.4em 0;
+}
 
+.codex-editor {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.codex-editor__redactor {
+  padding-bottom: 0!important;
+}
+
+.ce-block:first-of-type {
+  margin-top: 0;
+}
+
+.ce-block {
+  -webkit-animation: fade-in .3s ease;
+  animation: fade-in .3s ease;
+  -webkit-animation-fill-mode: none;
+  -webkit-animation-fill-mode: initial;
+  animation-fill-mode: none;
+}
+
+.ce-block__content {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+  -webkit-transition: background-color .15s ease;
+  transition: background-color .15s ease;
+}
+
+.ce-paragraph {
+  line-height: 1.6em;
+  outline: none;
+}
+
+.cdx-block {
+  padding: 0.4em 0;
+}
+
+.cdx-list--unordered {
+  list-style: disc;
+}
+
+.cdx-list {
+  margin: 0;
+  padding-left: 40px;
+  outline: none;
+}
+
+.cdx-list__item {
+  padding: 5.5px 0 5.5px 3px;
+  line-height: 1.6em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
