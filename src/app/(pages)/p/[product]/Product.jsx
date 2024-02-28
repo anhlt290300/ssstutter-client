@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProductBySlug } from "@/apollo/queries";
 import { useQuery } from "@apollo/client";
 import { usePathname } from "next/navigation";
-
+import Image from "next/image";
 const optionsChoice = {
   description: "des",
   deliveryAndpayment: "deli",
@@ -145,7 +145,7 @@ const Product = () => {
                   product.colors[0].images.map((item, index) => {
                     if (index < 3)
                       return (
-                        <img
+                        <Image
                           key={index}
                           className="aspect-[4/5] object-cover brightness-50 hover:brightness-100"
                           src={item}
@@ -157,7 +157,7 @@ const Product = () => {
             </div>
             <div className="w-full col-span-3">
               {product && (
-                <img
+                <Image
                   className="aspect-[4/5] object-cover"
                   src={product.colors[0].images[0]}
                 />
@@ -189,7 +189,7 @@ const Product = () => {
                   return (
                     <div key={index} className="basis-1/5">
                       <button className="w-full transition-all border disabled:grayscale border-secondary">
-                        <img src={item.mark} className="square border" alt="" />
+                        <Image src={item.mark} className="square border" alt="" />
                       </button>
                     </div>
                   );

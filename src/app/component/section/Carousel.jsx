@@ -5,6 +5,7 @@ import { IoCheckmarkDoneCircle } from "react-icons/io5";
 import { TbTruckDelivery } from "react-icons/tb";
 import { LiaTruckLoadingSolid } from "react-icons/lia";
 import Slider from "react-slick";
+import Image from "next/image";
 
 const Banner2 = [
   {
@@ -37,7 +38,7 @@ const Carousel = () => {
             return (
               <div key={index}>
                 <a href={item.slug}>
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.alt}
                     className="w-full h-full sm:aspect-[18/7] object-cover aspect-[4/5]"

@@ -18,7 +18,7 @@ const ListItemByCategory = ({ category, update, setUpdate }) => {
       setUpdate(false);
       setPage((page) => page + 1);
     }
-  }, [loading, error, data, update]);
+  }, [loading, error, data, update, list, setUpdate]);
   return (
     <div className="item-group grid grid-cols-2 sm:grid-cols-4">
       {list.map((item, index) => {

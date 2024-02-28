@@ -5,7 +5,7 @@ import { VscListFlat } from "react-icons/vsc";
 import { FiX } from "react-icons/fi";
 import ListItemByCategory from "../../../component/listItem/ListItemByCategory";
 import { useRouter, usePathname } from "next/navigation";
-
+raf
 const categories = [
   { slug: "so-mi-ao-kieu", title: "SƠ MI & ÁO KIỂU" },
   { slug: "ao-thun", title: "ÁO THUN" },
@@ -21,7 +21,7 @@ const categories = [
   ,
 ];
 
-const page = () => {
+const Page = () => {
   const [openCategories, setOpenCategories] = useState(false);
   const listRef = useRef(null);
   const [data, setData] = useState([]);
@@ -116,4 +116,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

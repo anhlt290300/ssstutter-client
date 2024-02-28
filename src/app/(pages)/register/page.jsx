@@ -22,7 +22,7 @@ const checkUserName = (string) => {
   const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
   return regex.test(string);
 };
-const page = () => {
+const Page = () => {
   // const { data: session, status, update } = useSession();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -55,7 +55,7 @@ const page = () => {
           email: email,
           password: password,
         });
-        setLoading(false);
+        setLoading(false);  
         setIsCreate(true);
       } catch (error) {
         //setError(error);
@@ -296,4 +296,4 @@ const ResultRegisterPage = () => {
   );
 };
 
-export default page;
+export default Page;

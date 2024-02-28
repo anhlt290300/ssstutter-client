@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 const Banner3 = [
@@ -30,7 +31,7 @@ const Banner = () => {
         {Banner3.map((item, index) => {
           return (
             <a key={index} href={item.slug}>
-              <img
+              <Image
                 src={item.image}
                 alt={item.alt}
                 className="w-full h-full sm:aspect-[16/3] object-cover "
