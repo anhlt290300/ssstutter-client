@@ -35,13 +35,13 @@ const ListProductCard = ({ products, slidesToShow }) => {
         className=" absolute z-[999] top-1/2 left-2 -translate-y-1/2"
         onClick={prevSlide}
       >
-        <GrFormPrevious color="#e5e7eb" size={50} />
+        <GrFormPrevious color="#e5e7eb" size={80} />
       </button>
       <button
         className="absolute z-10 top-1/2 right-2 -translate-y-1/2 "
         onClick={nextSlide}
       >
-        <GrFormNext color="#e5e7eb" size={50} />
+        <GrFormNext color="#e5e7eb" size={80} />
       </button>
       <Slider ref={sliderRef} {...settings} className="w-full">
         {products.map((item, index) => {

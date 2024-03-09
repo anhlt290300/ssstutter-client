@@ -15,7 +15,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import React, { useState } from "react";
 import image from "@/assets/image/bg.png";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import axios from "axios";
 
 const checkUserName = (string) => {
@@ -35,6 +35,17 @@ const Page = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [isCreate, setIsCreate] = useState(false);
+  const handleRegisterWithGoogle = async () => {
+    try {
+      //signOut();
+      setLoading(true);
+      signIn("google", { callbackUrl: "/" });
+    } catch (error) {
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !phone || !address || !email || !password || !repassword) {
@@ -55,7 +66,7 @@ const Page = () => {
           email: email,
           password: password,
         });
-        setLoading(false);  
+        setLoading(false);
         setIsCreate(true);
       } catch (error) {
         //setError(error);
@@ -106,9 +117,9 @@ const Page = () => {
           </a>
           <h1 className="font-bold text-5xl uppercase">Register</h1>
         </div>
-        <div className="col-span-2 bg-black/10 flex items-center justify-center flex-col gap-6">
+        <div className="col-span-2 bg-black/10 flex items-center justify-center flex-col gap-6 px-28">
           <div
-            onClick={() => signIn("google")}
+            onClick={() => handleRegisterWithGoogle()}
             className="flex items-center gap-4 cursor-pointer hover:bg-white/10 px-4 py-1 rounded-full"
           >
             <div className=" p-2 rounded-full bg-white inline-block  m-auto">
@@ -118,16 +129,17 @@ const Page = () => {
               Register with <strong className=" text-white">Google</strong>
             </h4>
           </div>
-          <p className="text-xl">
-            Or with <strong className=" text-white">Email</strong>
-          </p>
+
           <form
             onSubmit={(e) => {
               handleSubmit(e);
             }}
-            className="flex flex-col gap-5  justify-center items-center bg-white/20 px-16 py-6 rounded-md"
+            className="flex flex-col gap-5  justify-center items-center bg-white/20 px-16 py-6 rounded-md shadow-2xl shadow-white/40 w-full"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <p className="text-xl">
+              Or with <strong className=" text-white">Email</strong>
+            </p>
+            <div className="grid grid-cols-2 gap-4 w-full">
               <div className=" relative">
                 <label
                   htmlFor="username"
@@ -137,7 +149,7 @@ const Page = () => {
                 </label>
                 <input
                   onFocus={() => (error ? setError("") : "")}
-                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-72"
+                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-full"
                   name="username"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
@@ -153,7 +165,7 @@ const Page = () => {
                   Phone Number <MdOutlineLocalPhone size={25} />
                 </label>
                 <input
-                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-72"
+                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-full"
                   name="phone"
                   onFocus={() => (error ? setError("") : "")}
                   onChange={(e) => setPhone(e.target.value)}
@@ -171,7 +183,7 @@ const Page = () => {
                   Email <TfiEmail size={25} />
                 </label>
                 <input
-                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-72"
+                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-full"
                   name="email"
                   onFocus={() => (error ? setError("") : "")}
                   onChange={(e) => setEmail(e.target.value)}
@@ -188,7 +200,7 @@ const Page = () => {
                   Address <IoLocationSharp size={25} />
                 </label>
                 <input
-                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-72"
+                  className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-full"
                   name="address"
                   onFocus={() => (error ? setError("") : "")}
                   onChange={(e) => setAddress(e.target.value)}
@@ -206,7 +218,7 @@ const Page = () => {
                 </label>
                 <div className=" relative">
                   <input
-                    className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-72"
+                    className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-full"
                     onFocus={() => (error ? setError("") : "")}
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
@@ -235,7 +247,7 @@ const Page = () => {
                 </label>
                 <div className="relative">
                   <input
-                    className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-72"
+                    className="pl-4 pr-8 py-3 border rounded-lg border-black/40 focus:border-black outline-none bg-white w-full"
                     onFocus={() => (error ? setError("") : "")}
                     onChange={(e) => setRepassword(e.target.value)}
                     value={repassword}
@@ -270,8 +282,10 @@ const Page = () => {
             </button>
           </form>
           <div className="flex items-center justify-center gap-2">
-            <h2 className=" font-semibold text-xl">Have a Account?</h2>
-            <a href="/login" className=" text-white text-lg underline">
+            <h2 className=" font-semibold text-2xl text-white leading-7">
+              Have an Account?
+            </h2>
+            <a href="/login" className=" text-black text-xl underline">
               Login
             </a>
           </div>

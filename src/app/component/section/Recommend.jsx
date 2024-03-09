@@ -5,7 +5,7 @@ import { getProductCardsByTag } from "@/apollo/queries.js";
 import ListProductCard from "../ListProductCard.jsx";
 import ListSkeletonCard from "../ListSkeletonCard.jsx";
 
-const Suggest = () => {
+const Recommend = () => {
   const { loading, error, data } = useQuery(getProductCardsByTag, {
     variables: { page: 1, tag: "new" },
   });
@@ -35,4 +35,4 @@ const Suggest = () => {
   );
 };
 
-export default Suggest;
+export default Recommend;

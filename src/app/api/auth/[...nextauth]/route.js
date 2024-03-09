@@ -1,12 +1,15 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { redirect } from "next/navigation";
+import { prisma } from "../../../../../prisma/context";
+import bcrypt from "bcryptjs";
 
 export const option = {
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60 * 24, // 1day
   },
+  // adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -15,9 +18,6 @@ export const option = {
     Credentials({
       type: "credentials",
       credentials: {
-        name: { label: "UserName", type: "text" },
-        phone: { label: "PhoneNumber", type: "number" },
-        address: { label: "Address", type: "text" },
         email: {
           label: "Email",
           type: "email",
@@ -28,30 +28,68 @@ export const option = {
         },
       },
       async authorize(credentials, request) {
-        ///console.log("aaaa" + { credentials });
-        return {
-          email: credentials.email,
-          name: credentials.name,
-          password: credentials.password,
-        };
-        // return {
-        //   //name: credentials.name,
-        //   password: "a",
-        // };
+        return credentials;
       },
     }),
   ],
   callbacks: {
     async signIn({ user, email, credentials, account, profile }) {
-      // if (!profile?.email) {
-      //   throw new Error("no profile");
-      // }
-      //console.log(user);
-      return { account, profile };
+      if (account.provider === "google") {
+        // await prisma.user.deleteMany();
+        // await prisma.cart.deleteMany();
+        const user = await prisma.user.findUnique({
+          where: { email: profile.email },
+        });
+        if (user) {
+          return true;
+        } else {
+          try {
+            //console.log("profile ", profile);
+            let user2 = await prisma.user.create({
+              data: {
+                name: `${profile.family_name} ${profile.given_name}`,
+                email: profile.email,
+                active: true,
+                image: profile.picture,
+              },
+            });
+            console.log("user ", user2);
+            await prisma.cart.create({
+              data: {
+                userId: user2.id,
+              },
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      } else if (account.provider === "credentials") {
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
+        if (!user) throw new Error("Incorrect email or password.");
+        if (credentials.check) return true; /// chuyen sang trang tao password
+        if (!user.password) {
+          throw new Error(
+            "This email address is currently being used with Google. Please sign in with Google."
+          );
+        } else {
+          bcrypt.compare(credentials.password, user.password, (error, res) => {
+            if (!res) throw new Error("Incorrect email or password.");
+          });
+        }
+      }
+      return true;
     },
-    async jwt({ token, user }) {
-      //console.log(token);
-      return token;
+    async session({ session, token, user }) {
+      //console.log({ session });
+      // const user_ = await prisma.user.findUnique({
+      //   where: { email: session.user.email },
+      // });
+      // session.user_id = user_.id;
+      return session;
     },
   },
 };

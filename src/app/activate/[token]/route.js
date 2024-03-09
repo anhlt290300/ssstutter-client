@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../../prisma/context";
 import { use } from "react";
 import { redirect } from "next/navigation";
+import { signIn } from "next-auth/react";
+import axios from "axios";
 
 export const GET = async (request, { params }) => {
   const { token } = params;
@@ -50,6 +52,19 @@ export const GET = async (request, { params }) => {
     },
   });
 
-  redirect("/login");
-  return NextResponse.json({ mess: "success " });
+  //redirect("/login");
+  return NextResponse.json({ mess: "oke" });
 };
+
+// import { getSession } from "next-auth/react";
+
+// export const GET = async (req, res) => {
+//   const session = await getSession({ req });
+//   console.log(session);
+
+//   if (session) {
+//     return NextResponse.json({ user: session.user }, { status: 200 });
+//   } else {
+//     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+//   }
+// };

@@ -31,7 +31,7 @@ const Banner = () => {
         {Banner3.map((item, index) => {
           return (
             <a key={index} href={item.slug}>
-              <Image
+              <img
                 src={item.image}
                 alt={item.alt}
                 className="w-full h-full sm:aspect-[16/3] object-cover "

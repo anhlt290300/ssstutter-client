@@ -4,6 +4,10 @@ import ProviderSession from "./serverpage/session/ProviderSession";
 
 import ApolloProviderLayout from "./serverpage/apollo/ApolloProviderLayout";
 import MainLayout from "./(layout)/MainLayout";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
+import CheckAuth from "../../middleware/CheckAuth";
+import ListenToast from "../../middleware/ListenToast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +22,9 @@ export default function RootLayout({ children }) {
       <ApolloProviderLayout>
         <ProviderSession>
           <body className={inter.className}>
-            <MainLayout>{children}</MainLayout>
+            <CheckAuth>
+              <MainLayout>{children}</MainLayout>
+            </CheckAuth>
           </body>
         </ProviderSession>
       </ApolloProviderLayout>

@@ -9,26 +9,26 @@ import Image from "next/image";
 
 const Banner2 = [
   {
-    slug: "/campaign/tet-kiem",
-    image: "https://dashboard.leanow.vn/upload/1-2024/1706179428798.webp",
-    alt: "TÊT KIỆM",
+    slug: "/campaign/year-of-long",
+    image: "https://dashboard.leanow.vn/upload/2-2024/1708073726889.webp",
+    alt: "LONG",
   },
   {
-    slug: "/campaign/tet-kiem",
-    image: "https://dashboard.leanow.vn/upload/1-2024/1706179428798.webp",
-    alt: "TÊT KIỆM",
+    slug: "/c/for-him",
+    image: "https://dashboard.leanow.vn/upload/2-2024/1708073905140.webp",
+    alt: "M123",
   },
 ];
 const Carousel = () => {
   const settings = {
     dots: false,
-    //infinite: true,
+    infinite: true,
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    //autoplay: true,
+    autoplay: true,
     autoplaySpeed: 3000,
-    draggable: false, // Enable mouse dragging
+    draggable: true, // Enable mouse dragging
   };
   return (
     <section className="max-w-full bg-slate-50 overflow-hidden">
@@ -38,7 +38,7 @@ const Carousel = () => {
             return (
               <div key={index}>
                 <a href={item.slug}>
-                  <Image
+                  <img
                     src={item.image}
                     alt={item.alt}
                     className="w-full h-full sm:aspect-[18/7] object-cover aspect-[4/5]"

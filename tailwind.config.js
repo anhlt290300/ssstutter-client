@@ -12,7 +12,8 @@ module.exports = {
         secondary: "rgb( 255 255 255 /1)",
         "primary-300": "#00000080",
         "primary-100": "#0000004d",
-        buttonSlide: "#e5e7eb",
+        "primary-50": "#0000001a",
+        "buttonSlide": "#e5e7eb",
         "primary-500": "#000",
       },
       animation: {

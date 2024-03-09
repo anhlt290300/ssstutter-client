@@ -21,7 +21,11 @@ const ListSkeletonCard = ({ slidesToShow }) => {
     <div className=" relative w-full">
       <Slider ref={sliderRef} {...settings} className="w-full">
         {new Array(show).fill(undefined).map((item, index) => {
-          return <SkeletonCard key={index} />;
+          return (
+            <div key={index} className="p-2">
+              <SkeletonCard />
+            </div>
+          );
         })}
       </Slider>
     </div>

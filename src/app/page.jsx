@@ -1,6 +1,4 @@
 "use client";
-import { ApolloProvider } from "@apollo/client";
-import apolloClient from "../apollo/apollo.js";
 import React from "react";
 import Carousel from "./component/section/Carousel";
 import Recommend from "./component/section/Recommend.jsx";

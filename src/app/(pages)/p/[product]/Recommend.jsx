@@ -12,7 +12,7 @@ const Recommend = () => {
   if (loading)
     return (
       <div className="p-4 border-t sm:p-16">
-        <h4 class="uppercase text-sm sm:text-xl mb-4">có thể bạn sẽ thích</h4>
+        <h4 className="uppercase text-sm sm:text-xl mb-4">có thể bạn sẽ thích</h4>
         <ListSkeletonCard slidesToShow={4} />
       </div>
     );
@@ -20,7 +20,7 @@ const Recommend = () => {
   const rs = data.getProductCardsByTag;
   return (
     <div className="p-4 border-t sm:p-16">
-      <h4 class="uppercase text-sm sm:text-xl mb-4">có thể bạn sẽ thích</h4>
+      <h4 className="uppercase text-sm sm:text-xl mb-4">có thể bạn sẽ thích</h4>
       <ListProductCard products={rs.products} slidesToShow={4} />
     </div>
   );

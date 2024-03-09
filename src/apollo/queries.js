@@ -72,6 +72,7 @@ const getProductCardsPromotion = gql`
 const getProductBySlug = gql`
   query get($slug: String) {
     getProductBySlug(slug: $slug) {
+      id
       title
       cost
       price

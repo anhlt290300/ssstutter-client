@@ -2,7 +2,7 @@ import React from "react";
 
 const SkeletonCard = () => {
   return (
-    <div className="m-2 relative ">
+    <div className="relative w-full">
       <div className="hover:opacity-80 transition-all overflow-hidden">
         <div className="  ">
           <div

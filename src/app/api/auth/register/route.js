@@ -11,11 +11,10 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const POST = async (request) => {
   try {
     const { username, phone, address, email, password } = await request.json();
-    //console.log(typeof phone);
+    console.log("vao");
     const salt = bcrypt.genSaltSync(10);
     const newpassword = await bcrypt.hash(password, salt);
-    await prisma.user.deleteMany();
-    await prisma.activeToken.deleteMany({});
+
     let user = await prisma.user.findUnique({ where: { email: email } });
     if (user) {
       return NextResponse.json(
@@ -30,6 +29,12 @@ export const POST = async (request) => {
           phone: Number(phone),
           address: address,
           password: newpassword,
+        },
+      });
+
+      await prisma.cart.create({
+        data: {
+          userId: user.id,
         },
       });
 
@@ -51,6 +56,7 @@ export const POST = async (request) => {
           />
         ),
       });
+      //console.log(data);
     }
   } catch (error) {
     console.log(error);

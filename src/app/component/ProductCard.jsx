@@ -7,15 +7,16 @@ const ProductCard = ({ product }) => {
     <div className="m-2">
       <a href={`/p/${slug}`} className="hover:opacity-80 transition-all">
         <div className=" relative">
-          <Image
+          <img
             src={mark}
             alt=""
             className="w-full h-full aspect-[4/5] object-cover"
           />
           {tag === "new" && (
-            <Image
+            <img
               src="https://ssstutter.com/img/mark.png"
               className="absolute top-0 right-0 w-14 sm:w-16 drop-shadow-md"
+              alt=""
             />
           )}
           {discount > 0 && (
