@@ -76,9 +76,15 @@ export const option = {
             "This email address is currently being used with Google. Please sign in with Google."
           );
         } else {
-          bcrypt.compare(credentials.password, user.password, (error, res) => {
-            if (!res) throw new Error("Incorrect email or password.");
-          });
+          const check = bcrypt.compare(
+            credentials.password,
+            user.password,
+            (error, res) => {
+              if (!res) return false;
+              return true;
+            }
+          );
+          if (!check) throw new Error("Incorrect email or password.");
         }
       }
       return true;
