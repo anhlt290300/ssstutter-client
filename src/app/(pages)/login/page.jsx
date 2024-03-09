@@ -15,7 +15,7 @@ import image from "@/assets/image/bg.png";
 import Image from "next/image";
 import { signIn, signOut } from "next-auth/react";
 
-const page = () => {
+const Login = () => {
   const route = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -225,4 +225,4 @@ const PleaseCheckEmail = () => {
   );
 };
 
-export default page;
+export default Login;
