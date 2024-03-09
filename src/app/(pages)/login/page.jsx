@@ -27,8 +27,11 @@ const Login = () => {
   const handleRegisterWithGoogle = () => {
     //signOut();
     setLoading(true);
-    let login = signIn("google", {});
-    if (!login.error) route.back();
+    let login = signIn("google", {
+      redirect: false,
+    });
+    console.log(login);
+    //if (!login.error) route.back();
   };
 
   const handleSubmit = async (e) => {
