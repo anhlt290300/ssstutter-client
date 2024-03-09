@@ -41,7 +41,7 @@ export const option = {
           where: { email: profile.email },
         });
         if (user) {
-          return true;
+          return true
         } else {
           try {
             //console.log("profile ", profile);

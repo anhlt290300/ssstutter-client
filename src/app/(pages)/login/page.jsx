@@ -24,14 +24,18 @@ const Login = () => {
   const [hidepassword, setHidepassword] = useState(true);
   const [remember, setRemember] = useState(false);
   const [checkEmail, setCheckEmail] = useState(false);
-  const handleRegisterWithGoogle = () => {
+  const handleRegisterWithGoogle = async () => {
     //signOut();
     setLoading(true);
-    let login = signIn("google", {
-      redirect: false,
-    });
-    console.log(login);
-    //if (!login.error) route.back();
+    try {
+      await signIn("google", {
+        redirect: true,
+        callbackUrl: "/",
+      });
+      //route.back();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleSubmit = async (e) => {
