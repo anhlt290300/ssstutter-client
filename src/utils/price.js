@@ -6,8 +6,8 @@ const convert_price = (price) => {
   //   });
 
   //   return formatter.format(price).replaceAll(".", ",").trim();
-  price = price.toLocaleString("vi-VN").replace(/\./g, ",").slice(0, -3);
-  return Number(price) > 0 ? price + "000" : 0;
+  price = price.toLocaleString("vi-VN").replace(/\./g, ",");
+  return Number(price.slice(0, -3)) > 0 ? price.slice(0, -3) + "000" : price;
 };
 
 const get_sum = (items) => {
